@@ -1,4 +1,5 @@
 using JogoDasPalavras.ClassLibrary;
+using static JogoDasPalavras.ClassLibrary.Jogo;
 
 namespace JogoDasPalavras.WinFormsApp;
 
@@ -93,32 +94,28 @@ public partial class JogoPalavras : Form
         }
     }
 
-    private void ColorirCelulas(List<int> resultado)
+    private void ColorirCelulas(List<Resultado> resultado)
     {
         int index = 0;
 
-        const int ERRADO = -1;
-        const int FORA_ORDEM = 0;
-        const int CERTO = 1;
-
         var listaJogadaAtual = BuscarRowJogada();
 
-        foreach (int item in resultado)
+        foreach (Resultado item in resultado)
         {
             RichTextBox letra = listaJogadaAtual.First(i => i.Tag.Equals(index.ToString()));
 
             Button btn = listButton.Find(i => i.Text.Equals(letra.Text.ToUpper()))!;
 
-            if (btn != null && item == ERRADO)
+            if (btn != null && item == Resultado.ERRADO)
             {
                 btn.BackColor = Color.DarkGray;
             }
 
             switch (item)
             {
-                case ERRADO: letra.BackColor = Color.LightGray; break;
-                case FORA_ORDEM: letra.BackColor = Color.Yellow; break;
-                case CERTO: letra.BackColor = Color.LightGreen; break;
+                case Resultado.ERRADO: letra.BackColor = Color.LightGray; break;
+                case Resultado.FORA_ORDEM: letra.BackColor = Color.Yellow; break;
+                case Resultado.CERTO: letra.BackColor = Color.LightGreen; break;
             }
             index++;
         }
@@ -250,7 +247,7 @@ public partial class JogoPalavras : Form
 
         jogo.ObterPalpite(palpite);
 
-        List<int> resultado = jogo.ConferirPalavra();
+        List<Resultado> resultado = jogo.ConferirPalavra();
 
         ColorirCelulas(resultado);
 

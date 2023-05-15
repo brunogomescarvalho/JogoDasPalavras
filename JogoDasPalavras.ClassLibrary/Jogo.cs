@@ -8,7 +8,7 @@
 
         public string? PalavraPalpite { get; private set; }
 
-        private readonly List<int> ListaDeRetorno;
+        private readonly List<Resultado> ListaDeRetorno;
 
         public bool Acertou { get { return PalavraPalpite == PalavraSorteada; } }
 
@@ -18,7 +18,7 @@
         {
             this.PalavraSorteada = ObterPalavara();
             this.NumeroJogada = 0;
-            ListaDeRetorno = new List<int>();
+            ListaDeRetorno = new List<Resultado>();
 
         }
         private string ObterPalavara()
@@ -36,7 +36,7 @@
             this.PalavraPalpite = palavra.ToLower();
         }
 
-        public List<int> ConferirPalavra()
+        public List<Resultado> ConferirPalavra()
         {
             ListaDeRetorno.Clear();
 
@@ -44,19 +44,27 @@
             {
                 if (PalavraPalpite![i] == PalavraSorteada[i])
                 {
-                    this.ListaDeRetorno.Add(1);
+                    this.ListaDeRetorno.Add(Resultado.CERTO);
                 }
                 else if (PalavraSorteada.Contains(PalavraPalpite[i]))
                 {
-                    this.ListaDeRetorno.Add(0);
+                    this.ListaDeRetorno.Add(Resultado.FORA_ORDEM);
                 }
                 else
                 {
-                    this.ListaDeRetorno.Add(-1);
+                    this.ListaDeRetorno.Add(Resultado.ERRADO);
                 }
             }
 
             return ListaDeRetorno;
         }
+
+        public enum Resultado
+        {
+            CERTO = 1,
+            ERRADO = -1,
+            FORA_ORDEM = 0
+        }
+
     }
 }
