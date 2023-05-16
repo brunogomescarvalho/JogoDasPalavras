@@ -249,9 +249,7 @@ public partial class JogoPalavras : Form
 
         string palpite = ConstruirStringPalpite();
 
-        jogo.ObterPalpite(palpite);
-
-        List<Resultado> resultado = jogo.ConferirPalavra();
+        List<Resultado> resultado = jogo.ConferirPalavra(palpite);
 
         ColorirCelulas(resultado);
 
