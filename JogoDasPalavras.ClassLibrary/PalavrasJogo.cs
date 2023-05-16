@@ -8,8 +8,8 @@ namespace JogoDasPalavras.ClassLibrary
 {
     public partial class Jogo
     {
-      private readonly string[] Palavras = new string[]
-{
+        private readonly string[] Palavras = new string[]
+  {
     "ácido", "adiar", "ímpar", "algar", "amado", "amigo", "anexo", "anuir", "aonde", "apelo",
     "aquém", "argil", "arroz", "assar", "atrás", "ávido", "azeri", "babar", "bagre", "banho",
     "barco", "bicho", "bolor", "brasa", "brava", "brisa", "bruto", "bulir", "caixa", "cansa",
@@ -48,6 +48,6 @@ namespace JogoDasPalavras.ClassLibrary
     "haver", "hiato", "hidra", "hífen", "hímel", "horas", "hotel", "humor", "ideal", "ídolo",
     "igual", "ileso", "imune", "irado", "isola", "jarra", "jaula", "jegue", "jeito", "jogar",
     "jovem", "juíza", "juizo", "julho", "junho", "jurar", "justa"
-};
+  };
     }
 }

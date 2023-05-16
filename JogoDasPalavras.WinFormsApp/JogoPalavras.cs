@@ -143,7 +143,7 @@ public partial class JogoPalavras : Form
         {
             foreach (RichTextBox item in BuscarRowJogada())
             {
-                if (item.Enabled == true && item.Tag.ToString() == palpite.Length.ToString())
+                if (item.Tag.ToString() == palpite.Length.ToString())
                 {
                     palpite += item.Text;
                 }
@@ -210,12 +210,16 @@ public partial class JogoPalavras : Form
     private void CaixaSelecionada_click(object? sender, EventArgs e)
     {
         RichTextBox txtBox = (RichTextBox)sender!;
+       
         this.caixaSelecionada = txtBox!;
     }
 
     private void IncluirLetraPorTecladoVirtual(object sender, EventArgs e)
     {
         Button btn = (Button)sender;
+
+        if(caixaSelecionada.ReadOnly == true)
+            return;
 
         caixaSelecionada.Text = btn.Text;
 
